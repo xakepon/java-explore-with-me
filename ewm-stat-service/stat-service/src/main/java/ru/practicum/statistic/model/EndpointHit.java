@@ -2,7 +2,8 @@ package ru.practicum.statistic.model;
 
 import lombok.*;
 
-import javax.persistence.*;
+//import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity

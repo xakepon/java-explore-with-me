@@ -11,7 +11,7 @@ import ru.practicum.statistic.model.EndpointHitMapper;
 import ru.practicum.statistic.model.ViewStat;
 import ru.practicum.statistic.model.ViewStatMapper;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
