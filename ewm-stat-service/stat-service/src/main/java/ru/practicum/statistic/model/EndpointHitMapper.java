@@ -1,14 +1,13 @@
 package ru.practicum.statistic.model;
 
-import org.springframework.stereotype.Component;
 import ru.practicum.EndpointHitDto;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@Component
-public class EndpointHitMapper {
-    public EndpointHit toEndpointHit(EndpointHitDto hitDto) {
+
+public final class EndpointHitMapper {
+    public static EndpointHit toEndpointHit(EndpointHitDto hitDto) {
         return EndpointHit.builder()
                 .id(hitDto.getId())
                 .app(hitDto.getApp())
@@ -19,7 +18,7 @@ public class EndpointHitMapper {
                 .build();
     }
 
-    public EndpointHitDto toEndpointHitDto(EndpointHit hit) {
+    public static EndpointHitDto toEndpointHitDto(EndpointHit hit) {
         return EndpointHitDto.builder()
                 .id(hit.getId())
                 .app(hit.getApp())

@@ -21,18 +21,18 @@ import java.util.stream.Collectors;
 public class StatServiceImpl implements StatService {
 
     private final StatRepository repository;
-    private final EndpointHitMapper hitMapper;
-    private final ViewStatMapper statMapper;
 
     @Transactional
     @Override
     public EndpointHitDto addHit(EndpointHitDto hitDto) {
-        EndpointHit hit = repository.save(hitMapper.toEndpointHit(hitDto));
-        return hitMapper.toEndpointHitDto(hit);
+        EndpointHit hit = repository.save(EndpointHitMapper.toEndpointHit(hitDto));
+        return EndpointHitMapper.toEndpointHitDto(hit);
     }
 
+
     @Override
-    public List<ViewStatDto> getStats(LocalDateTime start, LocalDateTime end, List<String> uris, boolean unique) {
+    @org.springframework.transaction.annotation.Transactional(readOnly = true)
+        public List<ViewStatDto> getStats(LocalDateTime start, LocalDateTime end, List<String> uris, boolean unique) {
         if (start.isAfter(end)) {
             throw new BadRequestException("Error! Bad params, start is after end!");
         }
@@ -51,7 +51,7 @@ public class StatServiceImpl implements StatService {
     }
 
     private List<ViewStatDto> getViewStatDtoList(List<ViewStat> viewStats) {
-        return viewStats.stream().map(statMapper::toViewStatDto).collect(Collectors.toList());
+        return viewStats.stream().map(ViewStatMapper::toViewStatDto).collect(Collectors.toList());
     }
 
 }
