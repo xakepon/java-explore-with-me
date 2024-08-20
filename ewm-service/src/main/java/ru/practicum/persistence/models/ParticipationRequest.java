@@ -7,9 +7,7 @@ import ru.practicum.common.enums.ParticipationStatus;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Setter
-@ToString
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

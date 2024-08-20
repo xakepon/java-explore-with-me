@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import ru.practicum.persistence.models.Event;
 
-@RequiredArgsConstructor
 public final class CompilationMapper {
 
     public static Compilation toCompilation(NewCompilationDto compilationDto) {

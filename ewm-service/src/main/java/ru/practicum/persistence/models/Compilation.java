@@ -6,9 +6,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
-@ToString
+@Data
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Builder(toBuilder = true)
