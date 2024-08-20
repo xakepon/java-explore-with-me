@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 @Data
-@ToString
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class ApiResponseError {
