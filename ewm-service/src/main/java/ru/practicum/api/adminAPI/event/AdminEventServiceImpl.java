@@ -37,7 +37,6 @@ public class AdminEventServiceImpl implements AdminEventService {
     private final EventRep eventRepository;
 
     @Override
-    //@Transactional(readOnly = true)
     public List<EventFullDto> getAllEventsByAdmin(List<Long> users, List<String> states,
                                                   List<Long> categories, LocalDateTime rangeStart,
                                                   LocalDateTime rangeEnd, int from, int size) {

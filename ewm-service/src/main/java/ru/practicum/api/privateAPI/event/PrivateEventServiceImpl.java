@@ -75,7 +75,6 @@ public class PrivateEventServiceImpl implements PrivateEventService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public EventFullDto getEventByUser(Long userId, Long eventId) {
         validateUser(userId);
         return EventMapper.toEventFullDto(eventRepository.findById(eventId)

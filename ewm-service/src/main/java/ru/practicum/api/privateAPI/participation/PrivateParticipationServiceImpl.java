@@ -34,7 +34,6 @@ public class PrivateParticipationServiceImpl implements PrivateParticipationServ
     private final EventRep eventRepository;
 
     @Override
-    @Transactional(readOnly = true)
     public List<ParticipationRequestDto> getRequestsByUser(Long userId) {
         validateUserId(userId);
         List<Optional<ParticipationRequest>> requests = repository.findByRequesterId(userId);
@@ -95,7 +94,6 @@ public class PrivateParticipationServiceImpl implements PrivateParticipationServ
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<ParticipationRequestDto> getRequestsForUserEventByUser(Long userId, Long eventId) {
         validateUserId(userId);
         return repository.findByEventIn(eventRepository.findByIdAndInitiatorId(eventId, userId))

@@ -22,7 +22,6 @@ public class AdminUserServiceImpl implements AdminUserService {
     private final UserRep repository;
 
     @Override
-    @Transactional(readOnly = true)
     public List<UserDto> getUsers(List<Long> userIds, int from, int size) {
         Pageable page = PageRequest.of(from / size, size);
         return userIds != null ? getUsersWithListIds(userIds, page) : getUsersWithoutListIds(page);
@@ -40,14 +39,14 @@ public class AdminUserServiceImpl implements AdminUserService {
         repository.deleteById(userId);
     }
 
-    @Transactional(readOnly = true)
+
     private List<UserDto> getUsersWithListIds(List<Long> ids, Pageable page) {
         return repository.findAllByIdIn(ids, page).stream()
                 .map(UserMapper::toUserDto)
                 .collect(Collectors.toList());
     }
 
-    @Transactional(readOnly = true)
+
     private List<UserDto> getUsersWithoutListIds(Pageable page) {
         return repository.findAll(page).stream()
                 .map(UserMapper::toUserDto)
