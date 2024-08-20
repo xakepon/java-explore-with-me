@@ -28,7 +28,7 @@ public interface EventRep  extends JpaRepository<Event, Long> {
 
     @Query(value = "SELECT * " +
             "FROM event e " +
-            "WHERE (:userId IS NULL OR e.initiator_id IN (CAST(CAST(:userId AS TEXT) AS BIGINT))) " +
+            "WHERE (CAST(:userId AS TEXT) IS NULL OR e.initiator_id IN (CAST(CAST(:userId AS TEXT) AS BIGINT))) " +
             "AND (CAST(:states AS TEXT) IS NULL OR e.state IN (CAST(:states AS TEXT))) " +
             "AND (CAST(:categories AS TEXT) IS NULL OR e.category_id IN (CAST(CAST(:categories AS TEXT) AS BIGINT))) " +
             "AND (CAST(:rangeStart AS TIMESTAMP) IS NULL OR e.event_date >= CAST(:rangeStart AS TIMESTAMP))" +
