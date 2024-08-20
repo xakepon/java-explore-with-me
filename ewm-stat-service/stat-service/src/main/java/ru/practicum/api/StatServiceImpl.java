@@ -13,6 +13,7 @@ import ru.practicum.mapper.ViewStatMapper;
 
 import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,7 +52,8 @@ public class StatServiceImpl implements StatService {
     }
 
     private List<ViewStatDto> getViewStatDtoList(List<ViewStat> viewStats) {
-        return viewStats.stream().map(ViewStatMapper::toViewStatDto).collect(Collectors.toList());
+        List<ViewStatDto> viewStat = viewStats.stream().map(ViewStatMapper::toViewStatDto).collect(Collectors.toList());
+        return viewStat.isEmpty() ? Collections.emptyList() : viewStat;
     }
 
 }

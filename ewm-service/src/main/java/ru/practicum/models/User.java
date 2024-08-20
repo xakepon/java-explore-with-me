@@ -5,7 +5,8 @@ import jakarta.validation.constraints.Email;
 import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @RequiredArgsConstructor

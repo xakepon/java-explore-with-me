@@ -2,7 +2,6 @@ package ru.practicum.statistic;
 
 import lombok.*;
 
-//import javax.persistence.*;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
