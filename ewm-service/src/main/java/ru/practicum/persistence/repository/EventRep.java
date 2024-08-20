@@ -41,7 +41,7 @@ public interface EventRep  extends JpaRepository<Event, Long> {
                                      @Param("rangeEnd") LocalDateTime rangeEnd,
                                      Pageable pageable);
 
-    @Query(value = "SELECT * " +
+    @Query(value = "SELECT * "  +
             "FROM event e WHERE (e.state = 'PUBLISHED') " +
             "AND (CAST(:text AS TEXT) IS NULL OR LOWER(e.annotation) LIKE LOWER(CONCAT('%',CAST(:text AS TEXT),'%')) " +
             "OR lower(e.description) LIKE LOWER(concat('%',CAST(:text AS TEXT),'%'))) " +
