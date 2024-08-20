@@ -35,7 +35,7 @@ public class StatServiceImpl implements StatService {
     @org.springframework.transaction.annotation.Transactional(readOnly = true)
         public List<ViewStatDto> getStats(LocalDateTime start, LocalDateTime end, List<String> uris, boolean unique) {
         if (start.isAfter(end)) {
-            throw new ValidationRequestException("Error! Bad params, start is after end!");
+            throw new ValidationRequestException("Bad params, start is after end!");
         }
         if (unique) {
             return getAllUniqueViewStatList(start, end, uris, Pageable.ofSize(10));

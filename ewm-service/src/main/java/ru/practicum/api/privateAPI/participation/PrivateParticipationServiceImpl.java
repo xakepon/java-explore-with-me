@@ -12,12 +12,12 @@ import ru.practicum.common.exception.ForbiddenException;
 import ru.practicum.common.exception.NotFoundException;
 import ru.practicum.common.exception.ValidationException;
 import ru.practicum.common.mapper.ParticipationMapper;
-import ru.practicum.models.Event;
-import ru.practicum.models.ParticipationRequest;
-import ru.practicum.models.User;
-import ru.practicum.repository.EventRep;
-import ru.practicum.repository.ParticipationRep;
-import ru.practicum.repository.UserRep;
+import ru.practicum.persistence.models.Event;
+import ru.practicum.persistence.models.ParticipationRequest;
+import ru.practicum.persistence.models.User;
+import ru.practicum.persistence.repository.EventRep;
+import ru.practicum.persistence.repository.ParticipationRep;
+import ru.practicum.persistence.repository.UserRep;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

@@ -23,7 +23,7 @@ public class ErrorHandler {
     public ApiError validationExceptionHandle(ValidationException e) {
         return new ApiError(
                 ApiStatus.BAD_REQUEST,
-                "Неправильно составленный запрос.",
+                "Incorrectly made request.",
                 e.getMessage(),
                 LocalDateTime.now().format(formatter)
         );
@@ -57,7 +57,7 @@ public class ErrorHandler {
         String name = e.getParameterName();
         return new ApiError(
                 ApiStatus.BAD_REQUEST,
-                "Отсутствующий параметр запроса",
+                "Missing request parameter",
                 String.format("Required request parameter '%s' is not present", name),
                 LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
         );
@@ -68,7 +68,7 @@ public class ErrorHandler {
     public ApiError notFoundExceptionHandle(NotFoundException e) {
         return new ApiError(
                 ApiStatus.NOT_FOUND,
-                "Искомый объект не был найден.",
+                "The required object was not found..",
                 e.getMessage(),
                 LocalDateTime.now().format(formatter)
         );
@@ -79,7 +79,7 @@ public class ErrorHandler {
     public ApiError invalidStateException(InvalidStateException e) {
         return new ApiError(
                 ApiStatus.NOT_FOUND,
-                "Недопустимое состояние.",
+                "Invalid state.",
                 e.getMessage(),
                 LocalDateTime.now().format(formatter)
         );
@@ -90,7 +90,7 @@ public class ErrorHandler {
     public ApiError alreadyExistExceptionHandler(AlreadyExistsException e) {
         return new ApiError(
                 ApiStatus.CONFLICT,
-                "Было нарушено ограничение целостности.",
+                "Integrity constraint has been violated.",
                 e.getMessage(),
                 LocalDateTime.now().format(formatter)
         );
@@ -112,7 +112,7 @@ public class ErrorHandler {
     public ApiError forbiddenExceptionHandler(ForbiddenException e) {
         return new ApiError(
                 ApiStatus.FORBIDDEN,
-                "Для запрошенной операции условия не выполнены.",
+                "For the requested operation the conditions are not met.",
                 e.getMessage(),
                 LocalDateTime.now().format(formatter)
         );

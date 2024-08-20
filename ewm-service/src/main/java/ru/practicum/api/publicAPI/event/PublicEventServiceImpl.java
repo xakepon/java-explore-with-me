@@ -14,8 +14,8 @@ import ru.practicum.common.exception.NotFoundException;
 import ru.practicum.common.exception.ValidationException;
 import ru.practicum.common.mapper.EventMapper;
 import ru.practicum.common.mapper.ParticipationMapper;
-import ru.practicum.models.Event;
-import ru.practicum.repository.EventRep;
+import ru.practicum.persistence.models.Event;
+import ru.practicum.persistence.repository.EventRep;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

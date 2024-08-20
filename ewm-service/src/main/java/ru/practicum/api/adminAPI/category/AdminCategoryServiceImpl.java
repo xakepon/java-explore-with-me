@@ -8,9 +8,9 @@ import ru.practicum.api.responseDto.CategoryDto;
 import ru.practicum.common.exception.ForbiddenException;
 import ru.practicum.common.exception.NotFoundException;
 import ru.practicum.common.mapper.CategoryMapper;
-import ru.practicum.models.Category;
-import ru.practicum.repository.CategoryRep;
-import ru.practicum.repository.EventRep;
+import ru.practicum.persistence.models.Category;
+import ru.practicum.persistence.repository.CategoryRep;
+import ru.practicum.persistence.repository.EventRep;
 
 @Service
 @RequiredArgsConstructor

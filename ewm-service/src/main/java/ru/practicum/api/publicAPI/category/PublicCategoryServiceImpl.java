@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import ru.practicum.api.responseDto.CategoryDto;
 import ru.practicum.common.exception.NotFoundException;
 import ru.practicum.common.mapper.CategoryMapper;
-import ru.practicum.repository.CategoryRep;
+import ru.practicum.persistence.repository.CategoryRep;
 
 import java.util.Collections;
 import java.util.List;

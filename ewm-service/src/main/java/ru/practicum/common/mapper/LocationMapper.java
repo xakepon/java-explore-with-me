@@ -1,6 +1,6 @@
 package ru.practicum.common.mapper;
 
-import ru.practicum.models.Location;
+import ru.practicum.persistence.models.Location;
 import ru.practicum.api.responseDto.LocationDto;
 
 public final class LocationMapper {

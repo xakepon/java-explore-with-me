@@ -2,7 +2,7 @@ package ru.practicum.common.mapper;
 
 import ru.practicum.api.requestDto.NewCategoryDto;
 import ru.practicum.api.responseDto.CategoryDto;
-import ru.practicum.models.Category;
+import ru.practicum.persistence.models.Category;
 
 public final class CategoryMapper {
 

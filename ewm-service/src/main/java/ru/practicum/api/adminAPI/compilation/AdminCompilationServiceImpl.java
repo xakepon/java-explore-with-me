@@ -8,11 +8,11 @@ import ru.practicum.api.responseDto.CompilationDto;
 import ru.practicum.common.exception.NotFoundException;
 import ru.practicum.common.exception.ValidationException;
 import ru.practicum.common.mapper.CompilationMapper;
-import ru.practicum.models.Compilation;
-import ru.practicum.repository.CompilationRep;
-import ru.practicum.repository.EventRep;
+import ru.practicum.persistence.models.Compilation;
+import ru.practicum.persistence.repository.CompilationRep;
+import ru.practicum.persistence.repository.EventRep;
 import ru.practicum.api.requestDto.UpdateCompilationRequest;
-import ru.practicum.models.Event;
+import ru.practicum.persistence.models.Event;
 
 import java.util.List;
 

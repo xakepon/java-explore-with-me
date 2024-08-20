@@ -1,13 +1,15 @@
 package ru.practicum.common.mapper;
 
+import lombok.RequiredArgsConstructor;
 import ru.practicum.api.requestDto.NewEventDto;
 import ru.practicum.api.responseDto.EventFullDto;
 import ru.practicum.api.responseDto.EventShortDto;
-import ru.practicum.models.Event;
+import ru.practicum.persistence.models.Event;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@RequiredArgsConstructor
 public final class EventMapper {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

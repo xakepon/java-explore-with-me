@@ -2,7 +2,7 @@ package ru.practicum.common.mapper;
 
 import ru.practicum.api.responseDto.UserDto;
 import ru.practicum.api.responseDto.UserShortDto;
-import ru.practicum.models.User;
+import ru.practicum.persistence.models.User;
 import ru.practicum.api.requestDto.NewUserRequest;
 
 public final class UserMapper {

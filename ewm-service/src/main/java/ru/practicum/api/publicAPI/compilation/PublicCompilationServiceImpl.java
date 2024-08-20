@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import ru.practicum.api.responseDto.CompilationDto;
 import ru.practicum.common.exception.NotFoundException;
 import ru.practicum.common.mapper.CompilationMapper;
-import ru.practicum.models.Compilation;
-import ru.practicum.repository.CompilationRep;
+import ru.practicum.persistence.models.Compilation;
+import ru.practicum.persistence.repository.CompilationRep;
 
 import java.util.Collections;
 import java.util.List;

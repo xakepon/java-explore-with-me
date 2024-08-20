@@ -1,4 +1,4 @@
-package ru.practicum.repository;
+package ru.practicum.persistence.repository;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.practicum.common.enums.EventState;
-import ru.practicum.models.Event;
+import ru.practicum.persistence.models.Event;
 
 import java.time.LocalDateTime;
 import java.util.List;

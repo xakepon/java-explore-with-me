@@ -1,7 +1,7 @@
-package ru.practicum.models;
+package ru.practicum.persistence.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 
 @Entity
@@ -11,15 +11,18 @@ import lombok.*;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Builder
-@Table(name = "category")
-public class Category {
+@Table(name = "account")
+public class User {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false, unique = true)
-    @Size(min = 1, max = 50)
+    @Email
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "name", nullable = false)
     private String name;
 }

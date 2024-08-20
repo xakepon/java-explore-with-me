@@ -1,4 +1,4 @@
-package ru.practicum.repository;
+package ru.practicum.persistence.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.practicum.common.enums.ParticipationStatus;
-import ru.practicum.models.Event;
-import ru.practicum.models.ParticipationRequest;
+import ru.practicum.persistence.models.Event;
+import ru.practicum.persistence.models.ParticipationRequest;
 
 import java.util.List;
 import java.util.Optional;

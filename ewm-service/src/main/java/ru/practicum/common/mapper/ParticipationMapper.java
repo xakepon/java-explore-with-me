@@ -2,7 +2,7 @@ package ru.practicum.common.mapper;
 
 import ru.practicum.api.responseDto.ParticipationRequestDto;
 import ru.practicum.common.enums.ParticipationStatus;
-import ru.practicum.models.ParticipationRequest;
+import ru.practicum.persistence.models.ParticipationRequest;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;

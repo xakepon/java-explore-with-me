@@ -1,15 +1,17 @@
 package ru.practicum.common.mapper;
 
+import lombok.RequiredArgsConstructor;
 import ru.practicum.api.requestDto.NewCompilationDto;
 import ru.practicum.api.responseDto.CompilationDto;
 import ru.practicum.api.responseDto.EventShortDto;
-import ru.practicum.models.Compilation;
+import ru.practicum.persistence.models.Compilation;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import ru.practicum.models.Event;
+import ru.practicum.persistence.models.Event;
 
+@RequiredArgsConstructor
 public final class CompilationMapper {
 
     public static Compilation toCompilation(NewCompilationDto compilationDto) {

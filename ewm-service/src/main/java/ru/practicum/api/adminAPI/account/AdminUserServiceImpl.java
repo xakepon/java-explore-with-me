@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.api.requestDto.NewUserRequest;
 import ru.practicum.api.responseDto.UserDto;
 import ru.practicum.common.mapper.UserMapper;
-import ru.practicum.repository.UserRep;
-import ru.practicum.models.User;
+import ru.practicum.persistence.repository.UserRep;
+import ru.practicum.persistence.models.User;
 
 import java.util.List;
 import java.util.stream.Collectors;

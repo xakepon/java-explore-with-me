@@ -1,4 +1,4 @@
-package ru.practicum.models;
+package ru.practicum.persistence.models;
 
 import jakarta.persistence.*;
 import lombok.*;
