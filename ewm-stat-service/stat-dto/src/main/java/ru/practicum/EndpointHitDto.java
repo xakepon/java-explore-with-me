@@ -3,6 +3,7 @@ package ru.practicum;
 import lombok.*;
 
 @Data
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
