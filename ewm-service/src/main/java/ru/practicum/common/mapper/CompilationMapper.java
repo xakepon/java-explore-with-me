@@ -1,6 +1,5 @@
 package ru.practicum.common.mapper;
 
-import lombok.RequiredArgsConstructor;
 import ru.practicum.api.requestDto.NewCompilationDto;
 import ru.practicum.api.responseDto.CompilationDto;
 import ru.practicum.api.responseDto.EventShortDto;

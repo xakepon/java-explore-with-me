@@ -1,6 +1,5 @@
 package ru.practicum.common.mapper;
 
-import lombok.RequiredArgsConstructor;
 import ru.practicum.api.requestDto.NewEventDto;
 import ru.practicum.api.responseDto.EventFullDto;
 import ru.practicum.api.responseDto.EventShortDto;
