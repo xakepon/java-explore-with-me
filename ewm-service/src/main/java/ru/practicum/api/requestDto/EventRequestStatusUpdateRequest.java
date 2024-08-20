@@ -6,7 +6,6 @@ import ru.practicum.common.enums.RequestStatus;
 import java.util.List;
 
 @Data
-@ToString
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Builder

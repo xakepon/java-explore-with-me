@@ -8,7 +8,6 @@ import lombok.*;
 import ru.practicum.api.responseDto.LocationDto;
 
 @Data
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

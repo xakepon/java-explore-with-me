@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Data
-@ToString
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Builder

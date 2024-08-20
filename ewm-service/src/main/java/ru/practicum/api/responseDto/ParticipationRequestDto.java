@@ -3,7 +3,6 @@ package ru.practicum.api.responseDto;
 import lombok.*;
 
 @Data
-@ToString
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Builder

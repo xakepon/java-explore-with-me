@@ -6,7 +6,6 @@ import ru.practicum.api.responseDto.LocationDto;
 import ru.practicum.common.enums.AdminStateAction;
 
 @Data
-@ToString
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Builder

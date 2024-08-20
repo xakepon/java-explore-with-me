@@ -7,7 +7,6 @@ import ru.practicum.api.responseDto.LocationDto;
 import ru.practicum.common.enums.PrivateStateAction;
 
 @Data
-@ToString
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Builder
