@@ -40,6 +40,7 @@ public class PrivateEventServiceImpl implements PrivateEventService {
     private final CategoryRep categoryRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<EventShortDto> getUserEventsByUser(Long userId, int from, int size) {
         validateUser(userId);
         List<Event> events = eventRepository.findAllByInitiatorId(userId, PageRequest.of(from / size, size));

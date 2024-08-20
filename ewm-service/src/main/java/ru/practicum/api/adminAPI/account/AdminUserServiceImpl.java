@@ -22,6 +22,7 @@ public class AdminUserServiceImpl implements AdminUserService {
     private final UserRep repository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<UserDto> getUsers(List<Long> userIds, int from, int size) {
         Pageable page = PageRequest.of(from / size, size);
         return userIds != null ? getUsersWithListIds(userIds, page) : getUsersWithoutListIds(page);
