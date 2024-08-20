@@ -10,8 +10,8 @@ import ru.practicum.statistic.StatRepository;
 import ru.practicum.statistic.EndpointHit;
 import ru.practicum.mapper.EndpointHitMapper;
 import ru.practicum.mapper.ViewStatMapper;
+import org.springframework.transaction.annotation.Transactional;
 
-import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
@@ -32,7 +32,7 @@ public class StatServiceImpl implements StatService {
 
 
     @Override
-    @org.springframework.transaction.annotation.Transactional(readOnly = true)
+    @Transactional(readOnly = true)
         public List<ViewStatDto> getStats(LocalDateTime start, LocalDateTime end, List<String> uris, boolean unique) {
         if (start.isAfter(end)) {
             throw new ValidationRequestException("Bad params, start is after end!");
