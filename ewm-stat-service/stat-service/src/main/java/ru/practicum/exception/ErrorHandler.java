@@ -15,8 +15,6 @@ import static ru.practicum.constants.Constants.formatter;
 @RestControllerAdvice
 public class ErrorHandler {
 
-    //private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
     @ExceptionHandler(ValidationRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiResponseError validationExceptionHandle(ValidationRequestException e) {

@@ -10,8 +10,6 @@ import static ru.practicum.constants.Constants.formatter;
 
 public final class EndpointHitMapper {
 
-    //rivate static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
     private EndpointHitMapper() {
 
     }
