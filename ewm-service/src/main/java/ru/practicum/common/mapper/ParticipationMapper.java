@@ -33,7 +33,7 @@ public final class ParticipationMapper {
         return requests.stream()
                 .filter(request -> request.getStatus() == ParticipationStatus.CONFIRMED)
                 .count();*/
-        return requests == null? EMPTY_REQUESTS_COUNT : requests.stream()
+        return requests == null ? EMPTY_REQUESTS_COUNT : requests.stream()
                 .filter(request -> request.getStatus() == ParticipationStatus.CONFIRMED)
                 .count();
 

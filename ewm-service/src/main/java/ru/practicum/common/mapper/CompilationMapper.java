@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 import ru.practicum.persistence.models.Event;
 
 public final class CompilationMapper {
+    private CompilationMapper() {
+    }
 
     public static Compilation toCompilation(NewCompilationDto compilationDto) {
         return Compilation.builder()

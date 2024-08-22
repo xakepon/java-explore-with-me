@@ -6,11 +6,16 @@ import ru.practicum.persistence.models.Category;
 
 public final class CategoryMapper {
 
+    private CategoryMapper() {
+    }
+
     public static Category toCategory(NewCategoryDto categoryDto) {
         return Category.builder()
                 .name(categoryDto.getName())
                 .build();
     }
+
+
 
     public static CategoryDto toCategoryDto(Category category) {
         return CategoryDto.builder()

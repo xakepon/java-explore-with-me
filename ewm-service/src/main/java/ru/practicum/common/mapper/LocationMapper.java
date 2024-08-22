@@ -5,6 +5,9 @@ import ru.practicum.api.responseDto.LocationDto;
 
 public final class LocationMapper {
 
+    private LocationMapper() {
+    }
+
     public static LocationDto toLocationDto(Location location) {
         return LocationDto.builder()
                 .lat(location.getLat())

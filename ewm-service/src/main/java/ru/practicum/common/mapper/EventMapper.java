@@ -11,6 +11,8 @@ import static ru.practicum.common.constants.Constants.formatter;
 
 public final class EventMapper {
 
+    private EventMapper() {
+    }
 
     public static EventFullDto toEventFullDto(Event event) {
         return EventFullDto.builder()
