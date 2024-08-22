@@ -13,6 +13,9 @@ public final class ParticipationMapper {
 
     private static final int EMPTY_REQUESTS_COUNT = 0;
 
+    private ParticipationMapper() {
+    }
+
     public static ParticipationRequestDto toParticipationRequestDto(ParticipationRequest request) {
         return ParticipationRequestDto.builder()
                 .created(request.getCreated().format(formatter))
@@ -24,11 +27,15 @@ public final class ParticipationMapper {
     }
 
     public static long confirmedRequestsCounts(List<ParticipationRequest> requests) {
-        if (requests == null) {
+       /* if (requests == null) {
             return EMPTY_REQUESTS_COUNT;
         }
         return requests.stream()
                 .filter(request -> request.getStatus() == ParticipationStatus.CONFIRMED)
+                .count();*/
+        return requests == null? EMPTY_REQUESTS_COUNT : requests.stream()
+                .filter(request -> request.getStatus() == ParticipationStatus.CONFIRMED)
                 .count();
+
     }
 }

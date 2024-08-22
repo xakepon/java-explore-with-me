@@ -7,6 +7,9 @@ import ru.practicum.api.requestDto.NewUserRequest;
 
 public final class UserMapper {
 
+    private UserMapper() {
+    }
+
     public static User toUser(NewUserRequest userRequest) {
         return User.builder()
                 .email(userRequest.getEmail())
