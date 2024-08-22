@@ -90,7 +90,7 @@ public class PublicEventServiceImpl implements PublicEventService {
         sortState.ifPresentOrElse(
                 state -> {
                     Runnable action = sortActions.get(state);
-                    if (action!= null) {
+                    if (action != null) {
                         action.run();
                     } else {
                         throw new InvalidStateException(String.format("Undefined sort value=%s", sort));
