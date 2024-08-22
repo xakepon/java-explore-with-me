@@ -51,8 +51,6 @@ public class StatServiceImpl implements StatService {
     }
 
     private List<ViewStatDto> getViewStatDtoList(List<ViewStat> viewStats) {
-       // List<ViewStatDto> viewStat = viewStats.stream().map(ViewStatMapper::toViewStatDto).collect(Collectors.toList());
-       // return viewStat.isEmpty() ? Collections.emptyList() : viewStat;
         return viewStats.stream().map(ViewStatMapper::toViewStatDto).collect(Collectors.toList());
     }
 
