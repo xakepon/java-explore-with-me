@@ -4,12 +4,13 @@ import ru.practicum.EndpointHitDto;
 import ru.practicum.statistic.EndpointHit;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
+import static ru.practicum.constants.Constants.formatter;
 
 
 public final class EndpointHitMapper {
 
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    //rivate static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     private EndpointHitMapper() {
 
