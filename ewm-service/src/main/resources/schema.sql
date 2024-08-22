@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS compilation (
 CREATE TABLE IF NOT EXISTS compilation_event (
     event_id BIGINT NOT NULL CONSTRAINT FK_EVENT_COMPILATION REFERENCES event,
     compilation_id BIGINT NOT NULL CONSTRAINT FK_COMPILATION_EVENTS REFERENCES compilation
-    CONSTRAINT pk_compilation_event PRIMARY KEY (event_id)
+    --CONSTRAINT pk_compilation_event PRIMARY KEY (event_id)
 );
 
 CREATE TABLE IF NOT EXISTS participation (
