@@ -6,11 +6,11 @@ import ru.practicum.api.responseDto.EventShortDto;
 import ru.practicum.persistence.models.Event;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
+import static ru.practicum.common.constants.Constants.formatter;
 
 public final class EventMapper {
 
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public static EventFullDto toEventFullDto(Event event) {
         return EventFullDto.builder()

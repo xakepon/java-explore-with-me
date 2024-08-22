@@ -20,18 +20,19 @@ import ru.practicum.persistence.repository.EventRep;
 import ru.practicum.persistence.repository.LocationRep;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static ru.practicum.common.constants.Constants.formatter;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class AdminEventServiceImpl implements AdminEventService {
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    //private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private final CategoryRep categoryRepository;
     private final LocationRep locationRepository;
     private final EventRep eventRepository;

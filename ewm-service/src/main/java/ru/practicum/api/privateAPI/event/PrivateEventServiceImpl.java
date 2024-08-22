@@ -25,15 +25,16 @@ import ru.practicum.persistence.repository.LocationRep;
 import ru.practicum.persistence.repository.UserRep;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static ru.practicum.common.constants.Constants.formatter;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class PrivateEventServiceImpl implements PrivateEventService {
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    //private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private final EventRep eventRepository;
     private final UserRep userRepository;
     private final LocationRep locationRepository;

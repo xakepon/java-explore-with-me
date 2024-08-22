@@ -18,16 +18,17 @@ import ru.practicum.persistence.models.Event;
 import ru.practicum.persistence.repository.EventRep;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static ru.practicum.common.constants.Constants.formatter;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class PublicEventServiceImpl implements PublicEventService {
     private static final int PLUS_ONE_VIEW = 1;
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    //private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private final EventRep repository;
 
     @Override

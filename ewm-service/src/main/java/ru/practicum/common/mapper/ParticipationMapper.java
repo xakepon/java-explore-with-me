@@ -4,12 +4,13 @@ import ru.practicum.api.responseDto.ParticipationRequestDto;
 import ru.practicum.common.enums.ParticipationStatus;
 import ru.practicum.persistence.models.ParticipationRequest;
 
-import java.time.format.DateTimeFormatter;
+
 import java.util.List;
+
+import static ru.practicum.common.constants.Constants.formatter;
 
 public final class ParticipationMapper {
 
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private static final int EMPTY_REQUESTS_COUNT = 0;
 
     public static ParticipationRequestDto toParticipationRequestDto(ParticipationRequest request) {
