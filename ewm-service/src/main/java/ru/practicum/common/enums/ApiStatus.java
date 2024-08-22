@@ -18,15 +18,6 @@ public enum ApiStatus {
     BAD_GATEWAY, SERVICE_UNAVAILABLE, GATEWAY_TIMEOUT, HTTP_VERSION_NOT_SUPPORTED, VARIANT_ALSO_NEGOTIATES,
     INSUFFICIENT_STORAGE, LOOP_DETECTED, BANDWIDTH_LIMIT_EXCEEDED, NOT_EXTENDED, NETWORK_AUTHENTICATION_REQUIRED;
 
-   /* public static Optional<ApiStatus> from(String stringStatus) {
-        for (ApiStatus status : values()) {
-            if (status.name().equalsIgnoreCase(stringStatus)) {
-                return Optional.of(status);
-            }
-        }
-        return Optional.empty();
-    }*/
-
     public static Optional<ApiStatus> from(String stringStatus) {
         return Arrays.stream(values())
                 .filter(status -> status.name().equalsIgnoreCase(stringStatus))

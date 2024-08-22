@@ -28,7 +28,6 @@ import static ru.practicum.common.constants.Constants.formatter;
 @RequiredArgsConstructor
 public class PublicEventServiceImpl implements PublicEventService {
     private static final int PLUS_ONE_VIEW = 1;
-    //private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private final EventRep repository;
 
     @Override
@@ -78,7 +77,7 @@ public class PublicEventServiceImpl implements PublicEventService {
         sortActions.put(SortState.VIEWS, () -> events.sort(Comparator.comparing(EventShortDto::getViews)));
 
         Optional<SortState> sortState = SortState.from(sort);
-        if (sortState.isPresent()) {
+        /*if (sortState.isPresent()) {
             Runnable action = sortActions.get(sortState.get());
             if (action != null) {
                 action.run();
@@ -87,7 +86,20 @@ public class PublicEventServiceImpl implements PublicEventService {
             }
         } else {
             throw new InvalidStateException(String.format("Undefined sort value=%s", sort));
-        }
+        }*/
+        sortState.ifPresentOrElse(
+                state -> {
+                    Runnable action = sortActions.get(state);
+                    if (action!= null) {
+                        action.run();
+                    } else {
+                        throw new InvalidStateException(String.format("Undefined sort value=%s", sort));
+                    }
+                },
+                () -> {
+                    throw new InvalidStateException(String.format("Undefined sort value=%s", sort));
+                }
+        );
     }
 
 }

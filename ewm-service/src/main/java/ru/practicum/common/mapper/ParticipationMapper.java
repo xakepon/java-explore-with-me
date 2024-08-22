@@ -27,12 +27,7 @@ public final class ParticipationMapper {
     }
 
     public static long confirmedRequestsCounts(List<ParticipationRequest> requests) {
-       /* if (requests == null) {
-            return EMPTY_REQUESTS_COUNT;
-        }
-        return requests.stream()
-                .filter(request -> request.getStatus() == ParticipationStatus.CONFIRMED)
-                .count();*/
+
         return requests == null ? EMPTY_REQUESTS_COUNT : requests.stream()
                 .filter(request -> request.getStatus() == ParticipationStatus.CONFIRMED)
                 .count();

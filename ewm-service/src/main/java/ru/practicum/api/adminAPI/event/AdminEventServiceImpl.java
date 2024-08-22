@@ -32,7 +32,6 @@ import static ru.practicum.common.constants.Constants.formatter;
 @RequiredArgsConstructor
 @Transactional
 public class AdminEventServiceImpl implements AdminEventService {
-    //private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private final CategoryRep categoryRepository;
     private final LocationRep locationRepository;
     private final EventRep eventRepository;
