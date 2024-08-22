@@ -77,24 +77,14 @@ public class PublicEventServiceImpl implements PublicEventService {
         sortActions.put(SortState.VIEWS, () -> events.sort(Comparator.comparing(EventShortDto::getViews)));
 
         Optional<SortState> sortState = SortState.from(sort);
-        /*if (sortState.isPresent()) {
-            Runnable action = sortActions.get(sortState.get());
-            if (action != null) {
-                action.run();
-            } else {
-                throw new InvalidStateException(String.format("Undefined sort value=%s", sort));
-            }
-        } else {
-            throw new InvalidStateException(String.format("Undefined sort value=%s", sort));
-        }*/
+
         sortState.ifPresentOrElse(
                 state -> {
                     Runnable action = sortActions.get(state);
-                    if (action != null) {
-                        action.run();
-                    } else {
+                    if (action == null) {
                         throw new InvalidStateException(String.format("Undefined sort value=%s", sort));
                     }
+                    action.run();
                 },
                 () -> {
                     throw new InvalidStateException(String.format("Undefined sort value=%s", sort));
