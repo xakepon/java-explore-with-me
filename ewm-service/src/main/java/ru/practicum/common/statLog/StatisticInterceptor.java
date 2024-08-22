@@ -7,14 +7,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import ru.practicum.EndpointHitDto;
 import ru.practicum.StatClient;
+import ru.practicum.common.constants.Constants;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Slf4j
 @Component
-public class StatisticInterceptor implements HandlerInterceptor {
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+public class StatisticInterceptor implements HandlerInterceptor, Constants {
     private final StatClient statClient;
 
     public StatisticInterceptor(StatClient statClient) {
