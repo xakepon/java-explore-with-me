@@ -11,7 +11,9 @@ public final class EndpointHitMapper {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    private EndpointHitMapper() {}
+    private EndpointHitMapper() {
+
+    }
 
     public static EndpointHit toEndpointHit(EndpointHitDto hitDto) {
         return EndpointHit.builder()
