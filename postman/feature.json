@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "8648f7a7-c707-4d74-af74-3788b736a74c",
+		"_postman_id": "4df3759c-a032-419e-8a7d-f6b4945c513a",
 		"name": "feature",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "13439739"
+		"_exporter_id": "32664521"
 	},
 	"item": [
 		{
@@ -191,7 +191,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"text\": \"And here is the second comment!\"\r\n}",
+							"raw": "{\r\n    \"text\": \"And here is the second comment, HERE WE GOUUU! now in korean: 안녕하세요!\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -578,7 +578,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"text\": \"And here is the second comment!\"\r\n}",
+							"raw": "{\r\n    \"text\": \"And here is the second comment, HERE WE GOUUU! now in korean: 안녕하세요!\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -611,7 +611,7 @@
 					"response": []
 				},
 				{
-					"name": "Получение комментария администратором",
+					"name": "Получение комментария админом",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -984,7 +984,7 @@
 					"response": []
 				},
 				{
-					"name": "Обновление комментария администратором",
+					"name": "Обновление комментария админом",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1190,7 +1190,7 @@
 					"                this.pm.sendRequest(request, (error, response) => {\r",
 					"                    if(error || (response.code >= 400 && response.code <= 599)) {\r",
 					"                        let err = error ? error : JSON.stringify(response.json());\r",
-					"                        console.error(\"При выполнении запроса к серверу возникла ошибка.\\n\", err,\r",
+					"                        console.error(\"При выполнении запроса к серверу возникла ошика.\\n\", err,\r",
 					"                             \"\\nДля отладки проблемы повторите такой же запрос к вашей программе \" + \r",
 					"                             \"на локальном компьютере. Данные запроса:\\n\", JSON.stringify(request));\r",
 					"\r",
