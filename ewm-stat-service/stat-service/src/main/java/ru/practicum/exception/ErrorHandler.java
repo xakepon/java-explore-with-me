@@ -2,26 +2,50 @@ package ru.practicum.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.time.LocalDateTime;
+
+import static ru.practicum.constants.Constants.formatter;
 
 @Slf4j
 @RestControllerAdvice
 public class ErrorHandler {
 
-    @ExceptionHandler(BadRequestException.class)
+    @ExceptionHandler(ValidationRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse badRequestException(BadRequestException e) {
-        log.error(e.getMessage());
-        return new ErrorResponse(e.getMessage());
+    public ApiResponseError validationExceptionHandle(ValidationRequestException e) {
+        return new ApiResponseError(
+                "BAD_REQUEST",
+                "Incorrectly made request.",
+                e.getMessage(),
+                LocalDateTime.now().format(formatter)
+        );
     }
 
-    @ExceptionHandler
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiResponseError handleMissingParams(MissingServletRequestParameterException e) {
+        return new ApiResponseError(
+                "BAD_REQUEST",
+                "Missing required parameter.",
+                e.getMessage(),
+                LocalDateTime.now().format(formatter)
+        );
+    }
+
+    @ExceptionHandler(Throwable.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ErrorResponse throwableExceptionHandle(Throwable e) {
-        log.error(e.getMessage());
-        return new ErrorResponse(e.getMessage());
+    public ApiResponseError throwableExceptionHandle(Throwable e) {
+        return new ApiResponseError(
+                "INTERNAL_SERVER_ERROR",
+                "An unexpected error occurred.",
+                e.getMessage(),
+                LocalDateTime.now().format(formatter)
+        );
     }
 
 }
