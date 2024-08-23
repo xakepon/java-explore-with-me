@@ -1,5 +1,7 @@
 package ru.practicum.common.mapper;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import ru.practicum.api.requestDto.NewCommentDto;
 import ru.practicum.api.responseDto.CommentDto;
 import ru.practicum.common.enums.CommentStatus;
@@ -13,12 +15,11 @@ import java.util.stream.Collectors;
 
 import static ru.practicum.common.constants.Constants.formatter;
 
-public final class CommentMapper {
+@Component
+@RequiredArgsConstructor
+public class CommentMapper {
 
-    private CommentMapper() {
-    }
-
-    public static Comment toNewComment(User user, Event event, NewCommentDto newCommentDto) {
+    public Comment toNewComment(User user, Event event, NewCommentDto newCommentDto) {
         return Comment.builder()
                 .event(event)
                 .author(user)
@@ -28,7 +29,7 @@ public final class CommentMapper {
                 .build();
     }
 
-    public static CommentDto toCommentDto(Comment comment) {
+    public CommentDto toCommentDto(Comment comment) {
         return CommentDto.builder()
                 .id(comment.getId())
                 .event(EventMapper.toEventShortDto(comment.getEvent()))
@@ -39,21 +40,22 @@ public final class CommentMapper {
                 .build();
     }
 
-    public static List<CommentDto> getCommentsDtoList(List<Comment> comments) {
+    public List<CommentDto> getCommentsDtoList(List<Comment> comments) {
         return comments.stream()
-                .map(CommentMapper::toCommentDto)
+                .map(this::toCommentDto)
                 .collect(Collectors.toList());
     }
 
-    public static void adminUpdateCommentFromDto(Comment comment, NewCommentDto newCommentDto) {
+    public void adminUpdateCommentFromDto(Comment comment, NewCommentDto newCommentDto) {
         comment.setText(newCommentDto.getText());
         comment.setCreated(LocalDateTime.now());
         comment.setStatus(CommentStatus.APPROVED);
     }
 
-    public static void privateUpdateCommentFromDto(Comment comment, NewCommentDto newCommentDto) {
+    public void privateUpdateCommentFromDto(Comment comment, NewCommentDto newCommentDto) {
         comment.setText(newCommentDto.getText());
         comment.setCreated(LocalDateTime.now());
         comment.setStatus(CommentStatus.PENDING);
     }
+
 }

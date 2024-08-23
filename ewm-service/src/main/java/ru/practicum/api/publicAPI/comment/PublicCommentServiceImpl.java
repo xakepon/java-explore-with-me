@@ -18,6 +18,7 @@ import java.util.List;
 public class PublicCommentServiceImpl implements PublicCommentService {
     private final EventRep eventRepository;
     private final CommentRep commentRep;
+    private final CommentMapper commentMapper;
 
     @Override
     public List<CommentDto> getAllEventComments(Long eventId, int from, int size) {
@@ -25,7 +26,7 @@ public class PublicCommentServiceImpl implements PublicCommentService {
                 .orElseThrow(() -> new NotFoundException(String.format("Event with id=%d was not found", eventId)));
 
         List<Comment> comments = commentRep.findAllByEventId(eventId, PageRequest.of(from / size, size));
-        List<CommentDto> commentDtoList = CommentMapper.getCommentsDtoList(comments);
+        List<CommentDto> commentDtoList = commentMapper.getCommentsDtoList(comments);
         return commentDtoList == null ? Collections.emptyList() : commentDtoList;
     }
 

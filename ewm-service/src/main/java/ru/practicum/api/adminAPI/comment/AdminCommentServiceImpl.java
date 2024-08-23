@@ -20,6 +20,7 @@ import java.util.Optional;
 @Transactional
 public class AdminCommentServiceImpl implements AdminCommentService {
     private final CommentRep commentRep;
+    private final CommentMapper commentMapper;
 
     @Override
     public CommentDto updateCommentStatusByAdmin(Long comId, String requestStatus) {
@@ -34,7 +35,7 @@ public class AdminCommentServiceImpl implements AdminCommentService {
         comment.setStatus(status);
         comment.setCreated(LocalDateTime.now());
         commentRep.save(comment);
-        return CommentMapper.toCommentDto(comment);
+        return commentMapper.toCommentDto(comment);
     }
 
     @Override
@@ -42,16 +43,16 @@ public class AdminCommentServiceImpl implements AdminCommentService {
         Comment comment = commentRep.findByIdAndAuthorId(comId, userId)
                 .orElseThrow(() -> new NotFoundException(String.format("Comment with id=%d and authorId=%d was not found,",
                         comId, userId)));
-        CommentMapper.adminUpdateCommentFromDto(comment, newCommentDto);
+        commentMapper.adminUpdateCommentFromDto(comment, newCommentDto);
         commentRep.save(comment);
-        return CommentMapper.toCommentDto(comment);
+        return commentMapper.toCommentDto(comment);
     }
 
     @Override
     public CommentDto getEventCommentByAdmin(Long comId) {
         Comment comment = commentRep.findById(comId)
                 .orElseThrow(() -> new NotFoundException(String.format("Comment with id=%d was not found,", comId)));
-        return CommentMapper.toCommentDto(comment);
+        return commentMapper.toCommentDto(comment);
     }
 
 }

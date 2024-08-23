@@ -24,6 +24,7 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
     private final CommentRep commentRep;
     private final UserRep userRepository;
     private final EventRep eventRepository;
+    private final CommentMapper commentMapper;
 
     @Override
     public CommentDto createEventCommentByUser(Long userId, Long eventId, NewCommentDto newCommentDto) {
@@ -32,9 +33,9 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new NotFoundException(String.format("Event with id=%d was not found,", eventId)));
 
-        Comment comment = CommentMapper.toNewComment(user, event, newCommentDto);
+        Comment comment = commentMapper.toNewComment(user, event, newCommentDto);
         commentRep.save(comment);
-        return CommentMapper.toCommentDto(comment);
+        return commentMapper.toCommentDto(comment);
     }
 
     @Override
@@ -50,9 +51,9 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
             throw new ForbiddenException("Only author and admin can update comment");
         }
 
-        CommentMapper.privateUpdateCommentFromDto(comment, newCommentDto);
+        commentMapper.privateUpdateCommentFromDto(comment, newCommentDto);
         commentRep.save(comment);
-        return CommentMapper.toCommentDto(comment);
+        return commentMapper.toCommentDto(comment);
     }
 
     @Override
@@ -63,7 +64,7 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
             log.error("metod deleteEventCommentByUser NotFoundException");
             throw new NotFoundException("Comment does not have author");
         }
-        if (comment.getAuthor().getId().equals(userId)) {
+        if (!comment.getAuthor().getId().equals(userId)) {
             log.error("metod deleteEventCommentByUser ForbiddenException");
            throw new ForbiddenException("Only author can delete comment");
         }
