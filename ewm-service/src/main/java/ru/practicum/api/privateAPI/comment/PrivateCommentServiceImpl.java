@@ -60,7 +60,10 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
         if (comment.getAuthor() == null) {
             throw new NotFoundException("Comment does not have author");
         }
-        if (!comment.getAuthor().getId().equals(userId)) {
+       // if (!comment.getAuthor().getId().equals(userId)) {
+
+        if (comment.getAuthor().getId() != userId) {
+
             throw new ForbiddenException("Only author can delete comment");
         }
         commentRep.deleteById(comId);
