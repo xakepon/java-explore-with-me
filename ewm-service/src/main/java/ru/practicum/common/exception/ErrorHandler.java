@@ -3,8 +3,6 @@ package ru.practicum.common.exception;
 
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
@@ -23,8 +21,6 @@ import static ru.practicum.common.constants.Constants.formatter;
 @Slf4j
 @RestControllerAdvice
 public class ErrorHandler {
-
-
 
     @ExceptionHandler(ValidationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
