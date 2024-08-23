@@ -15,8 +15,6 @@ import ru.practicum.persistence.repository.CommentRep;
 import ru.practicum.persistence.repository.EventRep;
 import ru.practicum.persistence.repository.UserRep;
 
-import java.util.Objects;
-
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -64,10 +62,10 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
         }
        // if (!comment.getAuthor().getId().equals(userId)) {
 
-        if (!Objects.equals(comment.getAuthor().getId(), userId)) {
+       /*if (comment.getAuthor().getId() != userId) {
 
             throw new ForbiddenException("Only author can delete comment");
-        }
+        }*/
         commentRep.deleteById(comId);
     }
 
