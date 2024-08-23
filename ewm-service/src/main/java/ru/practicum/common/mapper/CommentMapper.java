@@ -15,6 +15,9 @@ import static ru.practicum.common.constants.Constants.formatter;
 
 public final class CommentMapper {
 
+    private CommentMapper() {
+    }
+
     public static Comment toNewComment(User user, Event event, NewCommentDto newCommentDto) {
         return Comment.builder()
                 .event(event)

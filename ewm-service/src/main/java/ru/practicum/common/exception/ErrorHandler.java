@@ -70,7 +70,7 @@ public class ErrorHandler {
     public ApiError notFoundExceptionHandle(NotFoundException e) {
         return new ApiError(
                 ApiStatus.NOT_FOUND,
-                "The required object was not found..",
+                "The required object was not found.",
                 e.getMessage(),
                 LocalDateTime.now().format(formatter)
         );
