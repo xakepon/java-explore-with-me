@@ -48,7 +48,6 @@ public class AdminCommentServiceImpl implements AdminCommentService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public CommentDto getEventCommentByAdmin(Long comId) {
         Comment comment = commentRep.findById(comId)
                 .orElseThrow(() -> new NotFoundException(String.format("Comment with id=%d was not found,", comId)));
