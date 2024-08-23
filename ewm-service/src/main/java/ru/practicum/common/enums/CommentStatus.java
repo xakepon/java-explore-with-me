@@ -12,8 +12,11 @@ public enum CommentStatus {
     BLOCKED;
 
     public static Optional<CommentStatus> from(String stringStatus) {
-        return Arrays.stream(values())
-                .filter(status -> status.name().equalsIgnoreCase(stringStatus))
-                .findFirst();
+        for (CommentStatus status : values()) {
+            if (status.name().equalsIgnoreCase(stringStatus)) {
+                return Optional.of(status);
+            }
+        }
+        return Optional.empty();
     }
 }
