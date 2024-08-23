@@ -40,9 +40,9 @@ CREATE TABLE IF NOT EXISTS event (
 	state VARCHAR,
 	views BIGINT DEFAULT 0,
 	CONSTRAINT pk_event PRIMARY KEY (id),
-	CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE,
-    CONSTRAINT fk_location FOREIGN KEY (location_id) REFERENCES location(id) ON DELETE CASCADE,
-    CONSTRAINT fk_initiator FOREIGN KEY (initiator_id) REFERENCES account(id) ON DELETE CASCADE
+	CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES category(id),
+    CONSTRAINT fk_location FOREIGN KEY (location_id) REFERENCES location(id),
+    CONSTRAINT fk_initiator FOREIGN KEY (initiator_id) REFERENCES account(id)
 );
 
 CREATE TABLE IF NOT EXISTS compilation (
@@ -54,8 +54,8 @@ CREATE TABLE IF NOT EXISTS compilation (
 );
 
 CREATE TABLE IF NOT EXISTS compilation_event (
-    event_id BIGINT NOT NULL CONSTRAINT FK_EVENT_COMPILATION REFERENCES event ON DELETE CASCADE,
-    compilation_id BIGINT NOT NULL CONSTRAINT FK_COMPILATION_EVENTS REFERENCES compilation ON DELETE CASCADE
+    event_id BIGINT NOT NULL CONSTRAINT FK_EVENT_COMPILATION REFERENCES event,
+    compilation_id BIGINT NOT NULL CONSTRAINT FK_COMPILATION_EVENTS REFERENCES compilation
 );
 
 CREATE TABLE IF NOT EXISTS participation (
@@ -65,8 +65,8 @@ CREATE TABLE IF NOT EXISTS participation (
 	requester_id BIGINT,
 	status VARCHAR(30),
 	CONSTRAINT pk_participation PRIMARY KEY (id),
-	CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES event(id) ON DELETE CASCADE,
-	CONSTRAINT fk_requester FOREIGN KEY (requester_id) REFERENCES account(id) ON DELETE CASCADE
+	CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES event(id),
+	CONSTRAINT fk_requester FOREIGN KEY (requester_id) REFERENCES account(id)
 );
 
 CREATE TABLE IF NOT EXISTS comment (
@@ -77,6 +77,6 @@ CREATE TABLE IF NOT EXISTS comment (
     status VARCHAR(30),
     description VARCHAR(1000) NOT NULL,
     CONSTRAINT pk_comment PRIMARY KEY (id),
-    CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES event(id) ON DELETE CASCADE,
-    CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES account(id) ON DELETE CASCADE
+    CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES event(id),
+    CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES account(id)
 );
