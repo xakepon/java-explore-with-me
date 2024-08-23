@@ -47,7 +47,7 @@ public interface EventRep  extends JpaRepository<Event, Long> {
             "OR lower(e.description) LIKE LOWER(concat('%',CAST(:text AS TEXT),'%'))) " +
             "AND (CAST(:categories AS TEXT) IS NULL OR e.category_id IN (CAST(CAST(:categories AS TEXT) AS BIGINT))) " +
             "AND (CAST(:paid AS TEXT) IS NULL OR e.paid = CAST(CAST(:paid AS TEXT) AS BOOLEAN)) " +
-            "AND (e.event_date >= :rangeStart AS TIMESTAMP) " +
+            "AND (e.event_date >= CAST(:rangeStart AS TIMESTAMP)) " +
             "AND (CAST(:rangeEnd AS TIMESTAMP) IS NULL OR e.event_date < CAST(:rangeEnd AS TIMESTAMP))",
             nativeQuery = true)
     List<Event> findAllPublicEvents(@Param("text") String text,
