@@ -26,6 +26,7 @@ public class AdminCommentServiceImpl implements AdminCommentService {
         Comment comment = commentRep.findById(comId)
                 .orElseThrow(() -> new NotFoundException(String.format("Comment with id=%d was not found,", comId)));
 
+
         CommentStatus status = Optional.ofNullable(requestStatus)
                 .flatMap(CommentStatus::from)
                 .orElseThrow(() -> new InvalidStateException(String.format("Unknown status value=%s", requestStatus)));
