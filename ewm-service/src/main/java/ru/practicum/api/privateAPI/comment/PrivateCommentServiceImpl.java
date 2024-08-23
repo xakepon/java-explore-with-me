@@ -24,7 +24,6 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
     private final CommentRep commentRep;
     private final UserRep userRepository;
     private final EventRep eventRepository;
-    private final CommentMapper commentMapper;
 
     @Override
     public CommentDto createEventCommentByUser(Long userId, Long eventId, NewCommentDto newCommentDto) {
@@ -33,9 +32,9 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new NotFoundException(String.format("Event with id=%d was not found,", eventId)));
 
-        Comment comment = commentMapper.toNewComment(user, event, newCommentDto);
+        Comment comment = CommentMapper.toNewComment(user, event, newCommentDto);
         commentRep.save(comment);
-        return commentMapper.toCommentDto(comment);
+        return CommentMapper.toCommentDto(comment);
     }
 
     @Override
@@ -51,9 +50,9 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
             throw new ForbiddenException("Only author and admin can update comment");
         }
 
-        commentMapper.privateUpdateCommentFromDto(comment, newCommentDto);
+        CommentMapper.privateUpdateCommentFromDto(comment, newCommentDto);
         commentRep.save(comment);
-        return commentMapper.toCommentDto(comment);
+        return CommentMapper.toCommentDto(comment);
     }
 
     @Override
