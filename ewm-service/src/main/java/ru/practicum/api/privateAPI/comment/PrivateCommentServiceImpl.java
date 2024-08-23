@@ -11,7 +11,7 @@ import ru.practicum.common.mapper.CommentMapper;
 import ru.practicum.persistence.models.Comment;
 import ru.practicum.persistence.models.Event;
 import ru.practicum.persistence.models.User;
-import ru.practicum.persistence.repository.CommentRepository;
+import ru.practicum.persistence.repository.CommentRep;
 import ru.practicum.persistence.repository.EventRep;
 import ru.practicum.persistence.repository.UserRep;
 
@@ -19,7 +19,7 @@ import ru.practicum.persistence.repository.UserRep;
 @RequiredArgsConstructor
 @Transactional
 public class PrivateCommentServiceImpl implements PrivateCommentService {
-    private final CommentRepository commentRepository;
+    private final CommentRep commentRep;
     private final UserRep userRepository;
     private final EventRep eventRepository;
 
@@ -31,14 +31,14 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
                 .orElseThrow(() -> new NotFoundException(String.format("Event with id=%d was not found,", eventId)));
 
         Comment comment = CommentMapper.toNewComment(user, event, newCommentDto);
-        commentRepository.save(comment);
+        commentRep.save(comment);
         return CommentMapper.toCommentDto(comment);
     }
 
     @Override
     public CommentDto updateEventCommentByUser(Long userId, Long comId, NewCommentDto newCommentDto) {
         userRepository.findById(userId).orElseThrow(() -> new NotFoundException(String.format("User with id=%d was not found,", userId)));
-        Comment comment = commentRepository.findById(comId)
+        Comment comment = commentRep.findById(comId)
                 .orElseThrow(() -> new NotFoundException(String.format("Comment with id=%d was not found,", comId)));
 
         if (comment.getAuthor() == null) {
@@ -49,13 +49,13 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
         }
 
         CommentMapper.privateUpdateCommentFromDto(comment, newCommentDto);
-        commentRepository.save(comment);
+        commentRep.save(comment);
         return CommentMapper.toCommentDto(comment);
     }
 
     @Override
     public void deleteEventCommentByUser(Long userId, Long comId) {
-        Comment comment = commentRepository.findById(comId)
+        Comment comment = commentRep.findById(comId)
                 .orElseThrow(() -> new NotFoundException(String.format("Comment with id=%d was not found,", comId)));
         if (comment.getAuthor() == null) {
             throw new NotFoundException("Comment does not have author");
@@ -63,7 +63,7 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
         if (!comment.getAuthor().getId().equals(userId)) {
             throw new ForbiddenException("Only author can delete comment");
         }
-        commentRepository.deleteById(comId);
+        commentRep.deleteById(comId);
     }
 
 }

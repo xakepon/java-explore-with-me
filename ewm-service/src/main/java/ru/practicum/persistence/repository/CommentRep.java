@@ -7,7 +7,7 @@ import ru.practicum.persistence.models.Comment;
 import java.util.List;
 import java.util.Optional;
 
-public interface CommentRepository extends JpaRepository<Comment, Long> {
+public interface CommentRep extends JpaRepository<Comment, Long> {
 
     List<Comment> findAllByEventId(Long eventId, PageRequest page);
 

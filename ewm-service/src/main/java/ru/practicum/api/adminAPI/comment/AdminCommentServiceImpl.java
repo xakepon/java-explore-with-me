@@ -10,7 +10,7 @@ import ru.practicum.common.exception.InvalidStateException;
 import ru.practicum.common.exception.NotFoundException;
 import ru.practicum.common.mapper.CommentMapper;
 import ru.practicum.persistence.models.Comment;
-import ru.practicum.persistence.repository.CommentRepository;
+import ru.practicum.persistence.repository.CommentRep;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -19,11 +19,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Transactional
 public class AdminCommentServiceImpl implements AdminCommentService {
-    private final CommentRepository commentRepository;
+    private final CommentRep commentRep;
 
     @Override
     public CommentDto updateCommentStatusByAdmin(Long comId, String requestStatus) {
-        Comment comment = commentRepository.findById(comId)
+        Comment comment = commentRep.findById(comId)
                 .orElseThrow(() -> new NotFoundException(String.format("Comment with id=%d was not found,", comId)));
 
         CommentStatus status = Optional.ofNullable(requestStatus)
@@ -32,24 +32,24 @@ public class AdminCommentServiceImpl implements AdminCommentService {
 
         comment.setStatus(status);
         comment.setCreated(LocalDateTime.now());
-        commentRepository.save(comment);
+        commentRep.save(comment);
         return CommentMapper.toCommentDto(comment);
     }
 
     @Override
     public CommentDto updateEventCommentByAdmin(Long userId, Long comId, NewCommentDto newCommentDto) {
-        Comment comment = commentRepository.findByIdAndAuthorId(comId, userId)
+        Comment comment = commentRep.findByIdAndAuthorId(comId, userId)
                 .orElseThrow(() -> new NotFoundException(String.format("Comment with id=%d and authorId=%d was not found,",
                         comId, userId)));
         CommentMapper.adminUpdateCommentFromDto(comment, newCommentDto);
-        commentRepository.save(comment);
+        commentRep.save(comment);
         return CommentMapper.toCommentDto(comment);
     }
 
     @Override
     @Transactional(readOnly = true)
     public CommentDto getEventCommentByAdmin(Long comId) {
-        Comment comment = commentRepository.findById(comId)
+        Comment comment = commentRep.findById(comId)
                 .orElseThrow(() -> new NotFoundException(String.format("Comment with id=%d was not found,", comId)));
         return CommentMapper.toCommentDto(comment);
     }
