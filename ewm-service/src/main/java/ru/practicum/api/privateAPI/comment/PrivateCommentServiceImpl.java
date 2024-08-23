@@ -1,6 +1,7 @@
 package ru.practicum.api.privateAPI.comment;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.api.requestDto.NewCommentDto;
@@ -15,6 +16,7 @@ import ru.practicum.persistence.repository.CommentRep;
 import ru.practicum.persistence.repository.EventRep;
 import ru.practicum.persistence.repository.UserRep;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -58,9 +60,11 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
         Comment comment = commentRep.findById(comId)
                 .orElseThrow(() -> new NotFoundException(String.format("Comment with id=%d was not found,", comId)));
         if (comment.getAuthor() == null) {
+            log.error("metod deleteEventCommentByUser NotFoundException");
             throw new NotFoundException("Comment does not have author");
         }
-        if (!comment.getAuthor().getId().equals(userId)) {
+        if (comment.getAuthor().getId().equals(userId)) {
+            log.error("metod deleteEventCommentByUser ForbiddenException");
            throw new ForbiddenException("Only author can delete comment");
         }
         commentRep.deleteById(comId);
