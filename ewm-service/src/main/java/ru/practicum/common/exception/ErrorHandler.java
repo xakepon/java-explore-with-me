@@ -1,6 +1,7 @@
 package ru.practicum.common.exception;
 
 
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
@@ -115,6 +116,29 @@ public class ErrorHandler {
                 ApiStatus.FORBIDDEN,
                 "For the requested operation the conditions are not met.",
                 e.getMessage(),
+                LocalDateTime.now().format(formatter)
+        );
+    }
+
+    @ExceptionHandler(InterruptedTreadException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ApiError interruptedExceptionHandler(InterruptedTreadException e) {
+        return new ApiError(
+                ApiStatus.CONFLICT,
+                "Interrupted because of problems with tread",
+                e.getMessage(),
+                LocalDateTime.MIN.format(formatter)
+        );
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiError handleConstraintViolationException(ConstraintViolationException e) {
+        String errorMessage = e.getConstraintViolations().iterator().next().getMessage();
+        return new ApiError(
+                ApiStatus.BAD_REQUEST,
+                "Validation failed.",
+                errorMessage,
                 LocalDateTime.now().format(formatter)
         );
     }
