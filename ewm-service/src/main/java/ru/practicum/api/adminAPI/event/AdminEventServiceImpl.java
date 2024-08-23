@@ -38,7 +38,6 @@ public class AdminEventServiceImpl implements AdminEventService {
     private final EventRep eventRepository;
 
     @Override
-    @Transactional(readOnly = true)
     public List<EventFullDto> getAllEventsByAdmin(List<Long> users, List<String> states,
                                                   List<Long> categories, LocalDateTime rangeStart,
                                                   LocalDateTime rangeEnd, int from, int size) {
@@ -56,29 +55,6 @@ public class AdminEventServiceImpl implements AdminEventService {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new NotFoundException(String.format("Event with id=%d was not found", eventId)));
 
-       /* if (eventAdminRequest.getStateAction() != null) {
-            Map<AdminStateAction, Runnable> actions = new HashMap<>();
-
-            actions.put(AdminStateAction.PUBLISH_EVENT, () -> {
-                validatePublishEvent(event);
-                event.setState(EventState.PUBLISHED);
-                event.setPublishedOn(LocalDateTime.now());
-            });
-
-            actions.put(AdminStateAction.REJECT_EVENT, () -> {
-                if (event.getState() == EventState.PUBLISHED) {
-                    throw new ForbiddenException("Cannot reject, the event is already published");
-                }
-                event.setState(EventState.CANCELED);
-            });
-
-            Runnable action = actions.get(eventAdminRequest.getStateAction());
-            if (action != null) {
-                action.run();
-            } else {
-                throw new InvalidStateException("Unknown state action: " + eventAdminRequest.getStateAction());
-            }
-        }*/
 
         AdminStateAction state = eventAdminRequest.getStateAction();
         if (state != null) {
@@ -174,5 +150,4 @@ public class AdminEventServiceImpl implements AdminEventService {
 
         return actions;
     }
-
 }
