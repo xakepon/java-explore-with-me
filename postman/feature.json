@@ -341,11 +341,11 @@
 							"variable": [
 								{
 									"key": "userId",
-									"value": "{{uid}}"
+									"value": "3"
 								},
 								{
 									"key": "eventId",
-									"value": "{{eid}}"
+									"value": "1"
 								}
 							]
 						}
@@ -460,7 +460,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/users/:userId/comments/:comId",
+							"raw": "{{baseUrl}}/users/:userId/comments/:{{uid}}",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -468,16 +468,16 @@
 								"users",
 								":userId",
 								"comments",
-								":comId"
+								":{{uid}}"
 							],
 							"variable": [
 								{
 									"key": "userId",
-									"value": "{{uid}}"
+									"value": "1"
 								},
 								{
-									"key": "comId",
-									"value": "{{cid}}"
+									"key": "{{uid}}",
+									"value": "1"
 								}
 							]
 						}
@@ -599,11 +599,13 @@
 							"variable": [
 								{
 									"key": "userId",
-									"value": "{{uid}}"
+									"value": "1",
+									"type": "text"
 								},
 								{
 									"key": "comId",
-									"value": "{{cid}}"
+									"value": "2",
+									"type": "text"
 								}
 							]
 						}
@@ -723,7 +725,7 @@
 							"variable": [
 								{
 									"key": "comId",
-									"value": "{{cid}}"
+									"value": "2"
 								}
 							]
 						}
@@ -852,7 +854,7 @@
 							"variable": [
 								{
 									"key": "eventId",
-									"value": "{{eid}}"
+									"value": "1"
 								}
 							]
 						}
@@ -1096,11 +1098,11 @@
 							"variable": [
 								{
 									"key": "userId",
-									"value": "{{uid}}"
+									"value": "2"
 								},
 								{
 									"key": "comId",
-									"value": "{{cid}}"
+									"value": "1"
 								}
 							]
 						}
